@@ -1,4 +1,5 @@
 # FaceTrack
+![Banner](Banner.JPG)
 A visual servoing example using SimpleCV and an Arduino. 
 
 ## Motivation
