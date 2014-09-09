@@ -60,6 +60,30 @@ You want to change the serial port definition to match your setup. Change 'COM4'
 
 With that change save the file and run it. If all goes well you should see your camera's viewport in a window. Once you stick your face in the view plane a red box should be drawn around it and the camera should move to bring your face toward the center of the viewport. Move around, it should follow you!
 
+## Serial Protocol
+The serial protocol is very simple. The protocol to the Arduino is fairly straight forward: ">YYYPPP\n" where YYY and PPP are zero padded numbers representing Yaw and Pitch servo positions respectively. The protocol back from the Arduino is a little more interesting. The valid formats are as follows
+
+* #CommentGoesHere\n
+* $VariableName:VariableValue\n
+* !EventName\n
+
+### Comments
+Comments can be anything. They are really for debugging purposely only
+
+### Variables
+Variable names can be pretty much anything. Currently used variables are:
+
+* Version - The firmware version number
+* YawValue - The current yaw servo value
+* PitchValue - The current pitch servo value
+
+### Events
+Events can be anything but only the following 3 are used/supported:
+
+* Timeout - Indicates that the camera hasn't gotten any information for 1 second
+* ACK - The last command is valid and acknowledged
+* NAK - the last command is not valid
+
 ## Debugging
 The biggest problems you might encounter is that every servo is different and because of that you may need to edit the software to match your setup. 
 
